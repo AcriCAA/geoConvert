@@ -6,6 +6,9 @@
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -13,7 +16,7 @@
 </head>
 <body>
 <div id='map'></div>
-
+<!-- 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiYWNyaWNhYSIsImEiOiJjZWJhNTk4YzFiODZmNTdlZDg5ZGE3NTFhZmI2ZmUwOSJ9.haw7ETdkg_W2acjYWgZ9Rg';
 var map = L.mapbox.map('map', 'mapbox.light,acricaa.bdedf46e')
@@ -25,7 +28,41 @@ var map = L.mapbox.map('map', 'mapbox.light,acricaa.bdedf46e')
 var featureLayer = L.mapbox.featureLayer()
     .loadURL('https://api.phila.gov/bike-share-stations/v1')
     .addTo(map);
-</script>
-<script src="geoJSONConvert.js"></script>
+</script> -->
+<!-- <script src="geoJSONConvert.js"></script> -->
+
+<script> 
+var geoData = $.getJSON( "https://api.phila.gov/bike-share-stations/v1", function() {
+  console.log( "success" );
+})
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+ 
+// Perform other work here ...
+ 
+// Set another completion function for the request above
+geoData.complete(function() {
+  console.log( "second complete" );
+});
+
+
+
+//var geoData = JSON.parse('https://api.phila.gov/bike-share-stations/v1');
+//var features = geoData.features;
+
+//var feature = geoData.features[0];
+
+
+console.log(geoData);
+-->
+
+
 </body>
 </html>
