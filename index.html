@@ -52,7 +52,7 @@ geoData.complete(function() {
   console.log( "second complete" );
 });
 
-var geoDataParsed = JSON.parse(geoData);
+var geoDataParsed = jQuery.parseJSON(geoData);
 
 //var geoData = JSON.parse('https://api.phila.gov/bike-share-stations/v1');
 //var features = geoData.features;
